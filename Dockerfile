@@ -44,6 +44,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes nginx
 
 # Import code, build assets and mirror list
 RUN rm -rf package.json yarn.lock .babelrc webpack.config.js Gemfile.lock nginx.conf
+RUN export PATH=$PATH:/opt/ruby-enterprise-1.8.7-2010.02/bin
 COPY --from=build-site srv/_site .
 COPY --from=build-css srv/css css
 COPY --from=build-js srv/assets assets
